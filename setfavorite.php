@@ -14,3 +14,36 @@
 
 // Redirect back to booksite.php. If you want to redirect to the exact page user came from, that's header("Location:" . $_SERVER["HTTP_REFERER"]);
 // And no, that's not a typo. It is HTTP_REFERER.
+
+
+// Check if the "id" parameter is set in the GET request
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Check if the "favorites" cookie is set
+    $favorites = isset($_COOKIE['favorites']) ? explode(',', $_COOKIE['favorites']) : [];
+
+    // Check if the book ID is already in the favorites
+    $isFavorited = in_array($id, $favorites);
+
+    // If the book is favorited, remove it; otherwise, add it
+    if ($isFavorited) {
+        $favorites = array_diff($favorites, [$id]);
+    } else {
+        $favorites[] = $id;
+    }
+
+    // Convert the updated favorites array to a string and set the cookie
+    $favoritesString = implode(",", $favorites);
+    setcookie('favorites', $favoritesString, time() + 86400 * 30, '/');
+
+    // Redirect back to the referring page (in this case, booksite.php)
+    header("Location: booksite.php");
+    exit();
+} else {
+    // If "id" parameter is not set, handle the error or redirect to an error page
+    echo "Error: Book ID not specified.";
+    // Alternatively, redirect to an error page
+    // header("Location: error.php");
+    // exit();
+}
