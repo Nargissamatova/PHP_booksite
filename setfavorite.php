@@ -17,11 +17,11 @@
 
 
 // Check if the "id" parameter is set in the GET request
-if (isset($_GET['id'])) {
+if (isset ($_GET['id'])) {
     $id = $_GET['id'];
 
     // Check if the "favorites" cookie is set
-    $favorites = isset($_COOKIE['favorites']) ? explode(',', $_COOKIE['favorites']) : [];
+    $favorites = isset ($_COOKIE['favorites']) ? explode(',', $_COOKIE['favorites']) : [];
 
     // Check if the book ID is already in the favorites
     $isFavorited = in_array($id, $favorites);
@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
 
     // Convert the updated favorites array to a string and set the cookie
     $favoritesString = implode(",", $favorites);
-    setcookie('favorites', $favoritesString, time() + 86400 * 30, '/');
+    setcookie('favorites', $favoritesString, time() + 86400 * 31, '/');
 
     // Redirect back to the referring page (in this case, booksite.php)
     header("Location: booksite.php");
