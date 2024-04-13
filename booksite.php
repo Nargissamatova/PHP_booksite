@@ -62,7 +62,6 @@
             <?php
 
             // Check if the genre is set and display appropriate heading
-
             $genreName = isset($_GET['genre']) ? $_GET['genre'] : "All Books";
             echo '<h2>' . $genreName . '</h2>';
 
