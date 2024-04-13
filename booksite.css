@@ -1,6 +1,7 @@
 body {
     background-color: #fafaf8;
     background-image: url(books.jpg);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -12,12 +13,11 @@ a {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid #808d9a;
     background-color: white;
 }
 
 header {
-    background-color: #58944d;
+    background-color: #124f08;
     color: white;
     padding: 20px;
     text-align: center;
